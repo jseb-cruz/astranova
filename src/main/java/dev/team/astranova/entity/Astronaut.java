@@ -1,6 +1,4 @@
+package dev.team.astranova.entity;
 
-package dev.team.astronova.entity;
-
-
-public record Astronaut {
+public record Astronaut() {
 }
