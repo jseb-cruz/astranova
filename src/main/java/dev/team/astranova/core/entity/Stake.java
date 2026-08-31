@@ -12,7 +12,7 @@ public record Stake (
 ){
     public Stake(UUID stakeId, UUID userId, UUID missionId, MissionRole role) {
         if (stakeId == null) {
-            throw new IllegalArgumentException("El id del stake no puede ser nulo");
+            throw new IllegalArgumentException("El id de la participación no puede ser nulo");
         }
         if (userId == null) {
             throw new IllegalArgumentException("El id del usuario no puede ser nulo");
@@ -21,7 +21,7 @@ public record Stake (
             throw new IllegalArgumentException("El id de la mision no puede ser nulo");
         }
         if (role == null) {
-            throw new IllegalArgumentException("El rol del stake no puede ser nulo");
+            throw new IllegalArgumentException("El rol de la participación no puede ser nulo");
         }
         this.stakeId = stakeId;
         this.userId = userId;
