@@ -1,7 +1,7 @@
 package dev.team.astranova.entity;
 
 import dev.team.astranova.constant.EnvironmentalConditions;
-import dev.team.astranova.constant.ExplorationStatus;
+import dev.team.astranova.constant.ExplorationState;
 
 import java.util.UUID;
 
@@ -12,13 +12,13 @@ public record Planet(
         double distance,
         String type,
         String available_resources,
-        ExplorationStatus status,
+        ExplorationState status,
         EnvironmentalConditions conditions
 
 
 ) {
 
-    public Planet(UUID planetId, String name, double distance, String type, String available_resources, ExplorationStatus status, EnvironmentalConditions conditions) {
+    public Planet(UUID planetId, String name, double distance, String type, String available_resources, ExplorationState status, EnvironmentalConditions conditions) {
 
         if (planetId == null) {
             throw new IllegalArgumentException("El id del planeta no puede ser nulo");

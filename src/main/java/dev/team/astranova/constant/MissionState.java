@@ -1,8 +1,8 @@
 package dev.team.astranova.constant;
 
 public enum MissionState {
-    PLANNED,
-    IN_PROGRESS,
-    COMPLETED,
-    FAILED
+    MSTATE_PLANNED,
+    MSTATE_INPROGRESS,
+    MSTATE_COMPLETED,
+    MSTATE_FAILED
 }

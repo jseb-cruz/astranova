@@ -1,6 +1,6 @@
 package dev.team.astranova.entity;
 
-import dev.team.astranova.constant.SpaceshipStatus;
+import dev.team.astranova.constant.SpaceshipState;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -11,7 +11,7 @@ public record Spaceship(
         String name,
         String model,
         int capacity,
-        SpaceshipStatus status,
+        SpaceshipState status,
         LocalDate last_date_maintenance,
         int autonomy,
         LocalDate fabrication_date
@@ -20,7 +20,7 @@ public record Spaceship(
 
 ) {
 
-    public Spaceship(UUID spaceshipId, String name, String model, int capacity, SpaceshipStatus status, LocalDate last_date_maintenance, int autonomy, LocalDate fabrication_date) {
+    public Spaceship(UUID spaceshipId, String name, String model, int capacity, SpaceshipState status, LocalDate last_date_maintenance, int autonomy, LocalDate fabrication_date) {
 
         if (spaceshipId == null) {
             throw new IllegalArgumentException("El id de la nave espacial no puede ser nulo");

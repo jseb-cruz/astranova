@@ -1,8 +1,8 @@
 package dev.team.astranova.constant;
 
 
-public enum SpaceshipStatus {
-    ACTIVE,
+public enum SpaceshipState {
+    SSTATE_ACTIVE,
     INACTIVE,
     UNDER_MAINTENANCE
 }

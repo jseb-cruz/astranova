@@ -2,7 +2,7 @@ package dev.team.astranova.constant;
 
 public enum EnvironmentalConditions {
 
-    NORMAL,
-    EXTREME,
-    HAZARDOUS
+    CONDITIONS_NORMAL,
+    CONDITIONS_EXTREME,
+    CONDITIONS_HAZARDOUS
 }
