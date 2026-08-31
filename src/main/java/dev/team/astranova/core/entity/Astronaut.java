@@ -1,6 +1,6 @@
-package dev.team.astranova.entity;
+package dev.team.astranova.core.entity;
 
-import dev.team.astranova.constant.AstronautState;
+import dev.team.astranova.core.constant.AstronautState;
 import java.util.UUID;
 
 public record Astronaut(

@@ -1,4 +1,4 @@
-package dev.team.astranova.constant;
+package dev.team.astranova.core.constant;
 
 public enum EnvironmentalConditions {
 

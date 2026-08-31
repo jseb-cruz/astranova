@@ -1,6 +1,6 @@
-package dev.team.astranova.entity;
+package dev.team.astranova.core.entity;
 
-import dev.team.astranova.constant.MissionState;
+import dev.team.astranova.core.constant.MissionState;
 
 import java.time.LocalDate;
 import java.util.UUID;
