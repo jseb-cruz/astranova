@@ -35,7 +35,7 @@ public record Mission(
         if (state == null) {
             throw new IllegalArgumentException("El estado de la misión no puede ser nulo");
         }
-        if (state != MissionState.MSTATE_PLANNED) {
+        if (state != MissionState.MSTATE_PLANNED) {  // Si la misión no está en estado planificado, se requiere que las fechas de inicio y finalización sean no nulas
             if (startDate == null) {
                 throw new IllegalArgumentException("La fecha de inicio de la misión no puede ser nula");
             }

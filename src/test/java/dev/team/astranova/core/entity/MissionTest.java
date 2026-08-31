@@ -116,7 +116,7 @@ public class MissionTest {
     }
 
     @Test
-    void ShouldAllowNullDatesWhenMissionIsPlanned() {
+    void ShouldAllowNullDatesWhenMissionIsPlanned() {         //Permite fechas nulas cuando la misión está en estado planificado
         Mission mission = new Mission(
                 mockId,
                 mockSpaceshipId,
@@ -136,7 +136,7 @@ public class MissionTest {
     }
 
     @Test
-    void ShouldRejectNullStartDateWhenMissionIsInProgress() {
+    void ShouldRejectNullStartDateWhenMissionIsInProgress() {  //Rechaza fechas de inicio nulas cuando la misión está en estado en progreso
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Mission(
                 mockId,
                 mockSpaceshipId,
@@ -154,7 +154,7 @@ public class MissionTest {
     }
 
     @Test
-    void ShouldRejectNullEndDateWhenMissionIsInProgress() {
+    void ShouldRejectNullEndDateWhenMissionIsInProgress() { //Rechaza fechas de finalización nulas cuando la misión está en estado en progreso
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> new Mission(
                 mockId,
                 mockSpaceshipId,
