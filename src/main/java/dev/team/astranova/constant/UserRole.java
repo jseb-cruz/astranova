@@ -1,9 +1,9 @@
 package dev.team.astranova.constant;
 
 public enum UserRole {
-    USER,
-    OPERATOR,
-    CHIEF_ASTRONAUT,
-    MAINTENANCE_ENGINEER,
-    ADMIN
+    ROLE_USER,
+    ROLE_OPERATOR,
+    ROLE_CHIEFASTRONAUT,
+    ROLE_MAINTENANCEENGINEER,
+    ROLE_ADMIN
 }

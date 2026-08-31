@@ -1,6 +1,6 @@
 package dev.team.astranova.entity;
 
-import dev.team.astranova.constant.AstronautStatus;
+import dev.team.astranova.constant.AstronautState;
 import java.util.UUID;
 
 public record Astronaut(
@@ -10,11 +10,11 @@ public record Astronaut(
         String range,
         String specialty,
         String experience,
-        AstronautStatus status
+        AstronautState status
 ) {
 
 
-    public Astronaut(UUID userId, String nationality, String range, String specialty, String experience, AstronautStatus status) {
+    public Astronaut(UUID userId, String nationality, String range, String specialty, String experience, AstronautState status) {
 
         if (userId == null) {
             throw new IllegalArgumentException("El id del astronauta no puede ser nulo");

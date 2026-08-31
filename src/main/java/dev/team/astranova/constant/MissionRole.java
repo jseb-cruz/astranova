@@ -1,7 +1,7 @@
 package dev.team.astranova.constant;
 
 public enum MissionRole {
-    ASTRONAUT,
-    CHIEF_ASTRONAUT,
-    MAINTENANCE_ENGINEER
+    MROLE_ASTRONAUT,
+    MROLE_CHIEFASTRONAUT,
+    MROLE_MAINTENANCEENGINEER
 }
