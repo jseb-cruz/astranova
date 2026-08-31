@@ -1,6 +1,6 @@
-package dev.team.astranova.entity;
+package dev.team.astranova.core.entity;
 
-import dev.team.astranova.constant.MissionRole;
+import dev.team.astranova.core.constant.MissionRole;
 
 import java.util.UUID;
 

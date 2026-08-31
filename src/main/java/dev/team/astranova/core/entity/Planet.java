@@ -1,7 +1,7 @@
-package dev.team.astranova.entity;
+package dev.team.astranova.core.entity;
 
-import dev.team.astranova.constant.EnvironmentalConditions;
-import dev.team.astranova.constant.ExplorationState;
+import dev.team.astranova.core.constant.EnvironmentalConditions;
+import dev.team.astranova.core.constant.ExplorationState;
 
 import java.util.UUID;
 
