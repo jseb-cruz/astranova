@@ -42,16 +42,8 @@ public record Spaceship(
             throw new IllegalArgumentException("El estado de la nave espacial no puede ser nulo");
         }
 
-        if (last_date_maintenance == null) {
-            throw new IllegalArgumentException("La fecha del ultimo mantenimiento de la nave espacial no puede ser nula");
-        }
-
         if (autonomy <= 0) {
             throw new IllegalArgumentException("La autonomia de la nave espacial debe ser mayor a 0");
-        }
-
-        if (fabrication_date == null) {
-            throw new IllegalArgumentException("La fecha de fabricacion de la nave espacial no puede ser nula");
         }
 
         this.spaceshipId = spaceshipId;
