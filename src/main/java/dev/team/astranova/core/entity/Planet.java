@@ -37,7 +37,7 @@ public record Planet(
         }
 
         if (available_resources == null || available_resources.isBlank()) {
-            throw new IllegalArgumentException("Los recursos disponibles del planeta no pueden ser nulos o vacios");
+            throw new IllegalArgumentException("Los recursos del planeta no pueden ser nulos o vacios");
         }
 
 
