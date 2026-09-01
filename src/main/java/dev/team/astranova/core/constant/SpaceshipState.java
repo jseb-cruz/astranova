@@ -3,6 +3,6 @@ package dev.team.astranova.core.constant;
 
 public enum SpaceshipState {
     SSTATE_ACTIVE,
-    INACTIVE,
-    UNDER_MAINTENANCE
+    SSTATE_INACTIVE,
+    SSTATE_UNDERMAINTENANCE
 }
