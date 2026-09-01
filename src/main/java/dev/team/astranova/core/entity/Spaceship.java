@@ -17,7 +17,6 @@ public record Spaceship(
         LocalDate fabrication_date
 
 
-
 ) {
 
     public Spaceship(UUID spaceshipId, String name, String model, int capacity, SpaceshipState status, LocalDate last_date_maintenance, int autonomy, LocalDate fabrication_date) {

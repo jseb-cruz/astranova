@@ -33,12 +33,12 @@ public class UserTest {
     void ShouldRejectNullId() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException
                 .class, () -> new User(
-                        null,
-                        "John",
-                        "Doe",
-                        "Johndue@gmail.com",
-                        "password123",
-                        mockRole));
+                null,
+                "John",
+                "Doe",
+                "Johndue@gmail.com",
+                "password123",
+                mockRole));
         assertEquals("El id del usuario no puede ser nulo",
                 exception.getMessage());
     }
@@ -47,12 +47,12 @@ public class UserTest {
     void ShouldRejectNullName() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException
                 .class, () -> new User(
-                        mockId,
-                        null,
-                        "Doe",
-                        "Johndue@gmail.com",
-                        "password123",
-                        mockRole));
+                mockId,
+                null,
+                "Doe",
+                "Johndue@gmail.com",
+                "password123",
+                mockRole));
         assertEquals("El nombre del usuario no puede ser nulo o vacio",
                 exception.getMessage());
     }
@@ -61,12 +61,12 @@ public class UserTest {
     void ShouldRejectBlankName() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException
                 .class, () -> new User(
-                        mockId,
-                        "   ",
-                        "Doe",
-                        "Johndue@gmail.com",
-                        "password123",
-                        mockRole));
+                mockId,
+                "   ",
+                "Doe",
+                "Johndue@gmail.com",
+                "password123",
+                mockRole));
         assertEquals("El nombre del usuario no puede ser nulo o vacio",
                 exception.getMessage());
     }
@@ -75,12 +75,12 @@ public class UserTest {
     void ShouldRejectNullLastName() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException
                 .class, () -> new User(
-                        mockId,
-                        "John",
-                        null,
-                        "Johndue@gmail.com",
-                        "password123",
-                        mockRole));
+                mockId,
+                "John",
+                null,
+                "Johndue@gmail.com",
+                "password123",
+                mockRole));
         assertEquals("El apellido del usuario no puede ser nulo o vacio",
                 exception.getMessage());
     }
@@ -89,12 +89,12 @@ public class UserTest {
     void ShouldRejectBlankLastName() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException
                 .class, () -> new User(
-                        mockId,
-                        "John",
-                        "   ",
-                        "Johndue@gmail.com",
-                        "password123",
-                        mockRole));
+                mockId,
+                "John",
+                "   ",
+                "Johndue@gmail.com",
+                "password123",
+                mockRole));
         assertEquals("El apellido del usuario no puede ser nulo o vacio",
                 exception.getMessage());
     }
@@ -103,12 +103,12 @@ public class UserTest {
     void ShouldRejectNullEmail() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException
                 .class, () -> new User(
-                        mockId,
-                        "John",
-                        "Doe",
-                        null,
-                        "password123",
-                        mockRole));
+                mockId,
+                "John",
+                "Doe",
+                null,
+                "password123",
+                mockRole));
         assertEquals("El email del usuario no puede ser nulo o vacio",
                 exception.getMessage());
     }
@@ -117,12 +117,12 @@ public class UserTest {
     void ShouldRejectBlankEmail() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException
                 .class, () -> new User(
-                        mockId,
-                        "John",
-                        "Doe",
-                        "   ",
-                        "password123",
-                        mockRole));
+                mockId,
+                "John",
+                "Doe",
+                "   ",
+                "password123",
+                mockRole));
         assertEquals("El email del usuario no puede ser nulo o vacio",
                 exception.getMessage());
     }
@@ -131,12 +131,12 @@ public class UserTest {
     void ShouldRejectNullPassword() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException
                 .class, () -> new User(
-                        mockId,
-                        "John",
-                        "Doe",
-                        "Johndue@gmail.com",
-                        null,
-                        mockRole));
+                mockId,
+                "John",
+                "Doe",
+                "Johndue@gmail.com",
+                null,
+                mockRole));
         assertEquals("La contraseña del usuario no puede ser nula o vacia",
                 exception.getMessage());
     }
@@ -145,12 +145,12 @@ public class UserTest {
     void ShouldRejectBlankPassword() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException
                 .class, () -> new User(
-                        mockId,
-                        "John",
-                        "Doe",
-                        "Johndue@gmail.com",
-                        "   ",
-                        mockRole));
+                mockId,
+                "John",
+                "Doe",
+                "Johndue@gmail.com",
+                "   ",
+                mockRole));
         assertEquals("La contraseña del usuario no puede ser nula o vacia",
                 exception.getMessage());
     }
@@ -159,12 +159,12 @@ public class UserTest {
     void ShouldRejectNullRole() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException
                 .class, () -> new User(
-                        mockId,
-                        "John",
-                        "Doe",
-                        "Johndue@gmail.com",
-                        "password123",
-                        null));
+                mockId,
+                "John",
+                "Doe",
+                "Johndue@gmail.com",
+                "password123",
+                null));
         assertEquals("El rol del usuario no puede ser nulo",
                 exception.getMessage());
     }

@@ -1,11 +1,12 @@
 package dev.team.astranova.core.entity;
 
 import dev.team.astranova.core.constant.AstronautState;
+
 import java.util.UUID;
 
 public record Astronaut(
 
-        UUID  userId,
+        UUID userId,
         String nationality,
         String range,
         String specialty,

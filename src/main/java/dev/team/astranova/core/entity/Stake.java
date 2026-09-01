@@ -4,12 +4,12 @@ import dev.team.astranova.core.constant.MissionRole;
 
 import java.util.UUID;
 
-public record Stake (
+public record Stake(
         UUID stakeId,
         UUID userId,
         UUID missionId,
         MissionRole role
-){
+) {
     public Stake(UUID stakeId, UUID userId, UUID missionId, MissionRole role) {
         if (stakeId == null) {
             throw new IllegalArgumentException("El id de la participación no puede ser nulo");

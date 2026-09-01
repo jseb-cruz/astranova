@@ -9,14 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-public class StakeTest{
+public class StakeTest {
     private final UUID mockId = UUID.randomUUID();
     private final UUID mockUserId = UUID.randomUUID();
     private final UUID mockMissionId = UUID.randomUUID();
     private final MissionRole mockMissionRole = MissionRole.MROLE_ASTRONAUT;
 
     @Test
-    void ShouldCreateStakeWithValidData(){
+    void ShouldCreateStakeWithValidData() {
         Stake stake = new Stake(mockId, mockUserId, mockMissionId, mockMissionRole);
 
         assertEquals(mockId, stake.stakeId());
@@ -26,9 +26,9 @@ public class StakeTest{
     }
 
     @Test
-    void ShouldRejectNullId(){
+    void ShouldRejectNullId() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException
-                .class,() -> new Stake(
+                        .class, () -> new Stake(
                         null,
                         mockUserId,
                         mockMissionId,
@@ -41,9 +41,9 @@ public class StakeTest{
     }
 
     @Test
-    void ShouldRejectNullUserId(){
+    void ShouldRejectNullUserId() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException
-                .class,() -> new Stake(
+                        .class, () -> new Stake(
                         mockId,
                         null,
                         mockMissionId,
@@ -56,9 +56,9 @@ public class StakeTest{
     }
 
     @Test
-    void ShouldRejectNullMissionId(){
+    void ShouldRejectNullMissionId() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException
-                .class,() -> new Stake(
+                        .class, () -> new Stake(
                         mockId,
                         mockUserId,
                         null,
@@ -71,9 +71,9 @@ public class StakeTest{
     }
 
     @Test
-    void ShouldRejectNullMissionRole(){
+    void ShouldRejectNullMissionRole() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException
-                .class,() -> new Stake(
+                        .class, () -> new Stake(
                         mockId,
                         mockUserId,
                         mockMissionId,

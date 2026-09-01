@@ -41,7 +41,7 @@ public class SpaceshipTest {
     void ShouldCreateSpaceshipWithAllDates() {
         LocalDate maintenanceDate = LocalDate.now();
         LocalDate fabricationDate = LocalDate.now().minusYears(2);
-        
+
         Spaceship spaceship = new Spaceship(
                 mockId,
                 "Test Spaceship",
