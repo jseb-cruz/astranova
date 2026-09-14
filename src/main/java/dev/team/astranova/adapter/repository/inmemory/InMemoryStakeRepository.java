@@ -1,0 +1,55 @@
+package dev.team.astranova.adapter.repository.inmemory;
+
+import dev.team.astranova.core.dto.StakeDTO;
+import dev.team.astranova.core.entity.Stake;
+import dev.team.astranova.core.port.StakeRepository;
+
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+import dev.team.astranova.core.entity.User;
+import dev.team.astranova.core.port.UserRepository;
+
+public class InMemoryStakeRepository implements StakeRepository{
+
+    private final ArrayList<Stake> List = new ArrayList<>();
+    @Override
+    public List<Stake> findAll() {
+        return List;
+    }
+
+    @Override
+    public Optional<Stake> findById(UUID id) {
+        for (Stake stake : List) {
+            if (stake.stakeId().equals(id)) {
+                return Optional.of(stake);
+            }
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Stake create(StakeDTO stakeRequest) {
+       Stake stake = new Stake(
+               UUID.randomUUID(),
+               UUID.randomUUID(),
+               UUID.randomUUID(),
+               stakeRequest.role()
+       );
+       List.add(stake);
+       return stake;
+    }
+
+    @Override
+    public Stake update(UUID id, StakeDTO stakeRequest) {
+        return null;
+    }
+
+    @Override
+    public void delete(UUID id) {
+        List.removeIf(stake -> stake.stakeId().equals(id));
+    }
+}
