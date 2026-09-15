@@ -11,7 +11,8 @@ import java.util.UUID;
 
 public class InMemoryAstronautRepository implements AstronautRepository {
 
-    ArrayList<Astronaut> List = new ArrayList<>();
+    private final ArrayList<Astronaut> List = new ArrayList<>();
+
     @Override
     public List<Astronaut> findAll() {
         return List;

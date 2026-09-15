@@ -4,7 +4,6 @@ import dev.team.astranova.core.dto.MissionDTO;
 import dev.team.astranova.core.entity.Mission;
 import dev.team.astranova.core.port.MissionRepository;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

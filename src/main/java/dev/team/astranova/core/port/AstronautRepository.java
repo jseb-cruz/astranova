@@ -9,9 +9,13 @@ import java.util.UUID;
 
 public interface AstronautRepository {
     List<Astronaut> findAll();
+
     Optional<Astronaut> findById(UUID astronautId);
+
     Astronaut create(AstronautDTO astronautRequest);
+
     Astronaut update(UUID astronautId, AstronautDTO astronautRequest);
+
     void delete(UUID astronautId);
 
 }

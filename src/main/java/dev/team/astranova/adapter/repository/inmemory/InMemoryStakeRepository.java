@@ -4,18 +4,15 @@ import dev.team.astranova.core.dto.StakeDTO;
 import dev.team.astranova.core.entity.Stake;
 import dev.team.astranova.core.port.StakeRepository;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import dev.team.astranova.core.entity.User;
-import dev.team.astranova.core.port.UserRepository;
-
-public class InMemoryStakeRepository implements StakeRepository{
+public class InMemoryStakeRepository implements StakeRepository {
 
     private final ArrayList<Stake> List = new ArrayList<>();
+
     @Override
     public List<Stake> findAll() {
         return List;
@@ -33,14 +30,14 @@ public class InMemoryStakeRepository implements StakeRepository{
 
     @Override
     public Stake create(StakeDTO stakeRequest) {
-       Stake stake = new Stake(
-               UUID.randomUUID(),
-               UUID.randomUUID(),
-               UUID.randomUUID(),
-               stakeRequest.role()
-       );
-       List.add(stake);
-       return stake;
+        Stake stake = new Stake(
+                UUID.randomUUID(),
+                UUID.randomUUID(),
+                UUID.randomUUID(),
+                stakeRequest.role()
+        );
+        List.add(stake);
+        return stake;
     }
 
     @Override

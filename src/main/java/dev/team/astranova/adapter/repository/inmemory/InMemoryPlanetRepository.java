@@ -10,7 +10,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class InMemoryPlanetRepository implements PlanetRepository {
-    ArrayList<Planet> List = new ArrayList<>();
+    private final ArrayList<Planet> List = new ArrayList<>();
+
     @Override
     public List<Planet> findAll() {
         return List;
@@ -18,7 +19,7 @@ public class InMemoryPlanetRepository implements PlanetRepository {
 
     @Override
     public Optional<Planet> findById(UUID planetId) {
-        for (Planet planet : List){
+        for (Planet planet : List) {
             if (planet.planetId().equals(planetId)) {
                 return Optional.of(planet);
             }
@@ -61,7 +62,7 @@ public class InMemoryPlanetRepository implements PlanetRepository {
             }
         }
         return null;
-        }
+    }
 
     @Override
     public void delete(UUID planetId) {

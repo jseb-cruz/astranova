@@ -13,8 +13,12 @@ import java.util.UUID;
 public interface MissionRepository {
 
     List<Mission> findAll();
+
     Optional<Mission> findById(UUID missionId);
+
     Mission create(MissionDTO missionRequest);
+
     Mission update(UUID missionId, MissionDTO missionRequest);
+
     void delete(UUID missionId);
 }
