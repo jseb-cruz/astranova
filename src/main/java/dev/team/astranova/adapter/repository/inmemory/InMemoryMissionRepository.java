@@ -80,7 +80,7 @@ public class InMemoryMissionRepository implements MissionRepository {
     }
 
     @Override
-    public void delete(UUID id) {
-        List.removeIf(m -> m.missionId().equals(id));
+    public void delete(UUID missionId) {
+        List.removeIf(m -> m.missionId().equals(missionId));
     }
 }

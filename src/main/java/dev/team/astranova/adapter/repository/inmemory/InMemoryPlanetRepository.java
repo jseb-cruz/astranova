@@ -64,7 +64,7 @@ public class InMemoryPlanetRepository implements PlanetRepository {
         }
 
     @Override
-    public void delete(UUID id) {
-        List.removeIf(planet -> planet.planetId().equals(id));
+    public void delete(UUID planetId) {
+        List.removeIf(planet -> planet.planetId().equals(planetId));
     }
 }

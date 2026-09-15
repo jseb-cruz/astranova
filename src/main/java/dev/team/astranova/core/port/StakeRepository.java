@@ -10,8 +10,8 @@ import java.util.UUID;
 public interface StakeRepository {
 
     List<Stake> findAll();
-    Optional<Stake> findById(UUID id);
+    Optional<Stake> findById(UUID stakeId);
     Stake create(StakeDTO stakeRequest);
-    Stake update(UUID id, StakeDTO stakeRequest);
-    void delete(UUID id);
+    Stake update(UUID stakeId, StakeDTO stakeRequest);
+    void delete(UUID stakeId);
 }

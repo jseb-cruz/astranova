@@ -62,7 +62,7 @@ public class InMemoryStakeRepository implements StakeRepository{
     }
 
     @Override
-    public void delete(UUID id) {
-        List.removeIf(stake -> stake.stakeId().equals(id));
+    public void delete(UUID stakeId) {
+        List.removeIf(stake -> stake.stakeId().equals(stakeId));
     }
 }
