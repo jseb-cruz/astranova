@@ -17,9 +17,9 @@ public class InMemoryPlanetRepository implements PlanetRepository {
     }
 
     @Override
-    public Optional<Planet> findById(UUID PlanetId) {
+    public Optional<Planet> findById(UUID planetId) {
         for (Planet planet : List){
-            if (planet.planetId().equals(PlanetId)) {
+            if (planet.planetId().equals(planetId)) {
                 return Optional.of(planet);
             }
         }

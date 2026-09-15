@@ -25,9 +25,9 @@ public class InMemoryUserRepository implements UserRepository {
 
     // Find a user by id
     @Override
-    public Optional<User> findById(UUID UserId) {
+    public Optional<User> findById(UUID userId) {
         for (User user : List) {
-            if (user.userId().equals(UserId)) {
+            if (user.userId().equals(userId)) {
                 return Optional.of(user);
             }
         }

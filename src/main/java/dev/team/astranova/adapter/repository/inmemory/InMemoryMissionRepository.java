@@ -23,9 +23,9 @@ public class InMemoryMissionRepository implements MissionRepository {
     }
 
     @Override
-    public Optional<Mission> findById(UUID MissionId) {
+    public Optional<Mission> findById(UUID missionId) {
         for (Mission mission : List) {
-            if (mission.missionId().equals(MissionId)) {
+            if (mission.missionId().equals(missionId)) {
                 return Optional.of(mission);
             }
         }
