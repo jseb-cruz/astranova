@@ -10,9 +10,13 @@ import java.util.UUID;
 public interface PlanetRepository {
 
     List<Planet> findAll();
+
     Optional<Planet> findById(UUID planetId);
+
     Planet create(PlanetDTO planetRequest);
+
     Planet update(UUID planetId, PlanetDTO planetRequest);
+
     void delete(UUID planetId);
 
 
