@@ -22,9 +22,9 @@ public class InMemoryStakeRepository implements StakeRepository{
     }
 
     @Override
-    public Optional<Stake> findById(UUID id) {
+    public Optional<Stake> findById(UUID stakeId) {
         for (Stake stake : List) {
-            if (stake.stakeId().equals(id)) {
+            if (stake.stakeId().equals(stakeId)) {
                 return Optional.of(stake);
             }
         }
@@ -44,12 +44,25 @@ public class InMemoryStakeRepository implements StakeRepository{
     }
 
     @Override
-    public Stake update(UUID id, StakeDTO stakeRequest) {
+    public Stake update(UUID stakeId, StakeDTO stakeRequest) {
+        for (int i = 0; i < List.size(); i++) {
+            Stake existing = List.get(i);
+            if (existing.stakeId().equals(stakeId)) {
+                Stake updatedStake = new Stake(
+                        existing.stakeId(),
+                        existing.userId(),
+                        existing.missionId(),
+                        stakeRequest.role()
+                );
+                List.set(i, updatedStake);
+                return updatedStake;
+            }
+        }
         return null;
     }
 
     @Override
-    public void delete(UUID id) {
-        List.removeIf(stake -> stake.stakeId().equals(id));
+    public void delete(UUID stakeId) {
+        List.removeIf(stake -> stake.stakeId().equals(stakeId));
     }
 }

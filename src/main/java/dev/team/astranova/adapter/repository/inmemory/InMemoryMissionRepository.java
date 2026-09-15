@@ -23,9 +23,9 @@ public class InMemoryMissionRepository implements MissionRepository {
     }
 
     @Override
-    public Optional<Mission> findById(UUID MissionId) {
+    public Optional<Mission> findById(UUID missionId) {
         for (Mission mission : List) {
-            if (mission.missionId().equals(MissionId)) {
+            if (mission.missionId().equals(missionId)) {
                 return Optional.of(mission);
             }
         }
@@ -80,7 +80,7 @@ public class InMemoryMissionRepository implements MissionRepository {
     }
 
     @Override
-    public void delete(UUID id) {
-        List.removeIf(m -> m.missionId().equals(id));
+    public void delete(UUID missionId) {
+        List.removeIf(m -> m.missionId().equals(missionId));
     }
 }

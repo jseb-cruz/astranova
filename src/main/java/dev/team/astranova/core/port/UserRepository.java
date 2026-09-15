@@ -16,7 +16,7 @@ public interface UserRepository {
     List<User> findAll();
 
     // Find user by id
-    Optional<User> findById(UUID id);
+    Optional<User> findById(UUID userId);
 
     // Create a new user from the provided DTO
     User create(UserDTO userRequest);
@@ -25,5 +25,5 @@ public interface UserRepository {
     User update(UUID userId, UserDTO userRequest);
 
     // Delete a user by id
-    void delete(UUID id);
+    void delete(UUID userId);
 }
