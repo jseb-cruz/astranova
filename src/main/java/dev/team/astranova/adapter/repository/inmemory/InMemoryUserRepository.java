@@ -41,7 +41,7 @@ public class InMemoryUserRepository implements UserRepository {
 
     // Update existing user; returns updated user or null if not found
     @Override
-    public User update(UUID userId, UserDTO userRequest) {
+    public Optional<User> update(UUID userId, UserDTO userRequest) {
         for (User user : users) {
             if (user.userId().equals(userId)) {
                 User updatedUser = new User(
@@ -53,10 +53,10 @@ public class InMemoryUserRepository implements UserRepository {
                         userRequest.role()
                 );
                 users.set(users.indexOf(user), updatedUser);
-                return updatedUser;
+                return Optional.of(updatedUser);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     // Delete user by id

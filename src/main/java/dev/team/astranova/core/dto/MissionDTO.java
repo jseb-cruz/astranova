@@ -6,8 +6,6 @@ import java.time.LocalDate;
 
 
 public record MissionDTO(
-        String spaceshipName,
-        String planetName,
         String name,
         LocalDate startDate,
         LocalDate endDate,

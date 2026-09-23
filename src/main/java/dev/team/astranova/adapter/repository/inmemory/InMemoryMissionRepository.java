@@ -10,31 +10,34 @@ import java.util.Optional;
 import java.util.UUID;
 
 /**
- * Simple in-memory MissionRepository for tests.
+ * In-memory mission repository. Stores missions in an internal list for testing.
  */
 public class InMemoryMissionRepository implements MissionRepository {
 
+    // Internal storage list
     private final ArrayList<Mission> missions = new ArrayList<>();
 
+    // Return all missions (internal list reference)
     @Override
     public List<Mission> findAll() {
         return missions;
     }
 
+    // Find a mission by id
     @Override
     public Optional<Mission> findById(UUID missionId) {
         return missions.stream()
-                .filter(m -> m.missionId().equals(missionId))
+                .filter(mission -> mission.missionId().equals(missionId))
                 .findFirst();
     }
 
+    // Create a new mission linked to an existing spaceship and planet
     @Override
-    public Mission create(MissionDTO missionRequest) {
-
+    public Mission create(UUID spaceshipId, UUID planetId, MissionDTO missionRequest) {
         Mission mission = new Mission(
                 UUID.randomUUID(),
-                UUID.randomUUID(),
-                UUID.randomUUID(),
+                spaceshipId,
+                planetId,
                 missionRequest.name(),
                 missionRequest.startDate(),
                 missionRequest.endDate(),
@@ -44,13 +47,13 @@ public class InMemoryMissionRepository implements MissionRepository {
                 missionRequest.usedRecurses(),
                 missionRequest.result()
         );
-
         missions.add(mission);
         return mission;
     }
 
+    // Update existing mission; returns empty if not found
     @Override
-    public Mission update(UUID missionId, MissionDTO missionRequest) {
+    public Optional<Mission> update(UUID missionId, MissionDTO missionRequest) {
         for (Mission mission : missions) {
             if (mission.missionId().equals(missionId)) {
                 Mission updatedMission = new Mission(
@@ -67,12 +70,13 @@ public class InMemoryMissionRepository implements MissionRepository {
                         missionRequest.result()
                 );
                 missions.set(missions.indexOf(mission), updatedMission);
-                return updatedMission;
+                return Optional.of(updatedMission);
             }
         }
-        return null;
-        }
+        return Optional.empty();
+    }
 
+    // Delete mission by id
     @Override
     public void delete(UUID missionId) {
         missions.removeIf(m -> m.missionId().equals(missionId));

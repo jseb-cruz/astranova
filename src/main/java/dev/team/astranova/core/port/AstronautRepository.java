@@ -12,9 +12,9 @@ public interface AstronautRepository {
 
     Optional<Astronaut> findById(UUID astronautId);
 
-    Astronaut create(AstronautDTO astronautRequest);
+    Astronaut create(UUID userId, AstronautDTO astronautRequest);
 
-    Astronaut update(UUID astronautId, AstronautDTO astronautRequest);
+    Optional<Astronaut> update(UUID astronautId, AstronautDTO astronautRequest);
 
     void delete(UUID astronautId);
 

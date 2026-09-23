@@ -15,7 +15,7 @@ public interface PlanetRepository {
 
     Planet create(PlanetDTO planetRequest);
 
-    Planet update(UUID planetId, PlanetDTO planetRequest);
+    Optional<Planet> update(UUID planetId, PlanetDTO planetRequest);
 
     void delete(UUID planetId);
 

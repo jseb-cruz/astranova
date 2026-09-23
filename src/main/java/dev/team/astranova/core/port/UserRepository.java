@@ -22,7 +22,7 @@ public interface UserRepository {
     User create(UserDTO userRequest);
 
     // Update an existing user
-    User update(UUID userId, UserDTO userRequest);
+    Optional<User> update(UUID userId, UserDTO userRequest);
 
     // Delete a user by id
     void delete(UUID userId);

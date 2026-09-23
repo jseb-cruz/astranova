@@ -8,13 +8,13 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface SpaceshipRepository {
-    List<Spaceship> findALl();
+    List<Spaceship> findAll();
 
     Optional<Spaceship> findById(UUID spaceshipId);
 
     Spaceship create(SpaceshipDTO spaceshipRequest);
 
-    Spaceship update(UUID spaceshipId, SpaceshipDTO spaceshipRequest);
+    Optional<Spaceship> update(UUID spaceshipId, SpaceshipDTO spaceshipRequest);
 
     void delete(UUID spaceshipId);
 }

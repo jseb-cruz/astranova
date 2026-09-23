@@ -14,7 +14,7 @@ public class InMemorySpaceshipRepository implements SpaceshipRepository {
     private final ArrayList<Spaceship> spaceships = new ArrayList<>();
 
     @Override
-    public List<Spaceship> findALl() {
+    public List<Spaceship> findAll() {
         return spaceships;
     }
 
@@ -42,7 +42,7 @@ public class InMemorySpaceshipRepository implements SpaceshipRepository {
     }
 
     @Override
-    public Spaceship update(UUID spaceshipId, SpaceshipDTO spaceshipRequest) {
+    public Optional<Spaceship> update(UUID spaceshipId, SpaceshipDTO spaceshipRequest) {
         for (Spaceship spaceship : spaceships) {
             if (spaceship.spaceshipId().equals(spaceshipId)) {
                 Spaceship updatedSpaceship = new Spaceship(
@@ -56,10 +56,10 @@ public class InMemorySpaceshipRepository implements SpaceshipRepository {
                         spaceshipRequest.fabrication_date()
                 );
                 spaceships.set(spaceships.indexOf(spaceship), updatedSpaceship);
-                return updatedSpaceship;
+                return Optional.of(updatedSpaceship);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     @Override

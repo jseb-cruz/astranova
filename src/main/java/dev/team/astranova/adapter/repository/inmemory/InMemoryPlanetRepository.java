@@ -41,7 +41,7 @@ public class InMemoryPlanetRepository implements PlanetRepository {
     }
 
     @Override
-    public Planet update(UUID planetId, PlanetDTO planetRequest) {
+    public Optional<Planet> update(UUID planetId, PlanetDTO planetRequest) {
         for (Planet planet : planets) {
             if (planet.planetId().equals(planetId)) {
                 Planet updatedPlanet = new Planet(
@@ -54,10 +54,10 @@ public class InMemoryPlanetRepository implements PlanetRepository {
                         planetRequest.conditions()
                 );
                 planets.set(planets.indexOf(planet), updatedPlanet);
-                return updatedPlanet;
+                return Optional.of(updatedPlanet);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     @Override

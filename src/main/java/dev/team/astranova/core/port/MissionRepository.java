@@ -16,9 +16,9 @@ public interface MissionRepository {
 
     Optional<Mission> findById(UUID missionId);
 
-    Mission create(MissionDTO missionRequest);
+    Mission create(UUID spaceshipId, UUID planetId,MissionDTO missionRequest);
 
-    Mission update(UUID missionId, MissionDTO missionRequest);
+    Optional<Mission> update(UUID missionId, MissionDTO missionRequest);
 
     void delete(UUID missionId);
 }

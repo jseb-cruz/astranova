@@ -13,9 +13,9 @@ public interface StakeRepository {
 
     Optional<Stake> findById(UUID stakeId);
 
-    Stake create(StakeDTO stakeRequest);
+    Stake create(UUID userId, UUID missionId, StakeDTO stakeRequest);
 
-    Stake update(UUID stakeId, StakeDTO stakeRequest);
+    Optional<Stake> update(UUID stakeId, StakeDTO stakeRequest);
 
     void delete(UUID stakeId);
 }
