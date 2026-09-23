@@ -10,21 +10,18 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class InMemoryPlanetRepository implements PlanetRepository {
-    private final ArrayList<Planet> List = new ArrayList<>();
+    private final ArrayList<Planet> planets = new ArrayList<>();
 
     @Override
     public List<Planet> findAll() {
-        return List;
+        return planets;
     }
 
     @Override
     public Optional<Planet> findById(UUID planetId) {
-        for (Planet planet : List) {
-            if (planet.planetId().equals(planetId)) {
-                return Optional.of(planet);
-            }
-        }
-        return Optional.empty();
+        return planets.stream()
+                .filter(planet -> planet.planetId().equals(planetId))
+                .findFirst();
     }
 
     @Override
@@ -39,17 +36,16 @@ public class InMemoryPlanetRepository implements PlanetRepository {
                 planetRequest.conditions()
         );
 
-        List.add(planet);
+        planets.add(planet);
         return planet;
     }
 
     @Override
     public Planet update(UUID planetId, PlanetDTO planetRequest) {
-        for (int i = 0; i < List.size(); i++) {
-            Planet existing = List.get(i);
-            if (existing.planetId().equals(planetId)) {
+        for (Planet planet : planets) {
+            if (planet.planetId().equals(planetId)) {
                 Planet updatedPlanet = new Planet(
-                        existing.planetId(),
+                        planetId,
                         planetRequest.name(),
                         planetRequest.distance(),
                         planetRequest.type(),
@@ -57,7 +53,7 @@ public class InMemoryPlanetRepository implements PlanetRepository {
                         planetRequest.status(),
                         planetRequest.conditions()
                 );
-                List.set(i, updatedPlanet);
+                planets.set(planets.indexOf(planet), updatedPlanet);
                 return updatedPlanet;
             }
         }
@@ -66,6 +62,6 @@ public class InMemoryPlanetRepository implements PlanetRepository {
 
     @Override
     public void delete(UUID planetId) {
-        List.removeIf(planet -> planet.planetId().equals(planetId));
+        planets.removeIf(planet -> planet.planetId().equals(planetId));
     }
 }

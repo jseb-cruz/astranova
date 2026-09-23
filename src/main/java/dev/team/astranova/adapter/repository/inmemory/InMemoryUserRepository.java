@@ -15,42 +15,45 @@ import java.util.UUID;
 public class InMemoryUserRepository implements UserRepository {
 
     // Internal storage list
-    private final ArrayList<User> List = new ArrayList<>();
+    private final ArrayList<User> users = new ArrayList<>();
 
     // Return all users (internal list reference)
     @Override
     public List<User> findAll() {
-        return List;
+        return users;
     }
 
     // Find a user by id
     @Override
     public Optional<User> findById(UUID userId) {
-        for (User user : List) {
-            if (user.userId().equals(userId)) {
-                return Optional.of(user);
-            }
-        }
-        return Optional.empty();
+        return users.stream()
+                .filter(user -> user.userId() == userId)
+                .findFirst();
     }
 
     // Create a new user from a DTO
     @Override
     public User create(UserDTO userRequest) {
         User user = new User(UUID.randomUUID(), userRequest.name(), userRequest.lastName(), userRequest.email(), userRequest.password(), userRequest.role());
-        List.add(user);
+        users.add(user);
         return user;
     }
 
     // Update existing user; returns updated user or null if not found
     @Override
     public User update(UUID userId, UserDTO userRequest) {
-        for (int i = 0; i < List.size(); i++) {
-            User existing = List.get(i);
-            if (existing.userId().equals(userId)) {
-                User updated = new User(userId, userRequest.name(), userRequest.lastName(), userRequest.email(), userRequest.password(), userRequest.role());
-                List.set(i, updated);
-                return updated;
+        for (User user : users) {
+            if (user.userId().equals(userId)) {
+                User updatedUser = new User(
+                        user.userId(),
+                        userRequest.name(),
+                        userRequest.lastName(),
+                        userRequest.email(),
+                        userRequest.password(),
+                        userRequest.role()
+                );
+                users.set(users.indexOf(user), updatedUser);
+                return updatedUser;
             }
         }
         return null;
@@ -59,7 +62,7 @@ public class InMemoryUserRepository implements UserRepository {
     // Delete user by id
     @Override
     public void delete(UUID userId) {
-        List.removeIf(u -> u.userId().equals(userId));
+        users.removeIf(u -> u.userId().equals(userId));
     }
 }
 

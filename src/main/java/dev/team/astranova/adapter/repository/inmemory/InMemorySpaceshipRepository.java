@@ -11,21 +11,18 @@ import java.util.UUID;
 
 public class InMemorySpaceshipRepository implements SpaceshipRepository {
 
-    private final ArrayList<Spaceship> List = new ArrayList<>();
+    private final ArrayList<Spaceship> spaceships = new ArrayList<>();
 
     @Override
     public List<Spaceship> findALl() {
-        return List;
+        return spaceships;
     }
 
     @Override
     public Optional<Spaceship> findById(UUID spaceshipId) {
-        for (Spaceship spaceship : List) {
-            if (spaceship.spaceshipId().equals(spaceshipId)) {
-                return Optional.of(spaceship);
-            }
-        }
-        return Optional.empty();
+        return spaceships.stream()
+                .filter(spaceship -> spaceship.spaceshipId().equals(spaceshipId))
+                .findFirst();
     }
 
     @Override
@@ -40,14 +37,14 @@ public class InMemorySpaceshipRepository implements SpaceshipRepository {
                 spaceshipRequest.autonomy(),
                 spaceshipRequest.fabrication_date()
         );
-        List.add(spaceship);
+        spaceships.add(spaceship);
         return spaceship;
     }
 
     @Override
     public Spaceship update(UUID spaceshipId, SpaceshipDTO spaceshipRequest) {
-        for (int i = 0; i < List.size(); i++) {
-            if (List.get(i).spaceshipId().equals(spaceshipId)) {
+        for (Spaceship spaceship : spaceships) {
+            if (spaceship.spaceshipId().equals(spaceshipId)) {
                 Spaceship updatedSpaceship = new Spaceship(
                         spaceshipId,
                         spaceshipRequest.name(),
@@ -58,7 +55,7 @@ public class InMemorySpaceshipRepository implements SpaceshipRepository {
                         spaceshipRequest.autonomy(),
                         spaceshipRequest.fabrication_date()
                 );
-                List.set(i, updatedSpaceship);
+                spaceships.set(spaceships.indexOf(spaceship), updatedSpaceship);
                 return updatedSpaceship;
             }
         }
@@ -67,6 +64,6 @@ public class InMemorySpaceshipRepository implements SpaceshipRepository {
 
     @Override
     public void delete(UUID spaceshipId) {
-        List.removeIf(spaceship -> spaceship.spaceshipId().equals(spaceshipId));
+        spaceships.removeIf(spaceship -> spaceship.spaceshipId().equals(spaceshipId));
     }
 }
