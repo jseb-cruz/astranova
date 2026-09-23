@@ -9,23 +9,21 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+
 public class InMemoryStakeRepository implements StakeRepository {
 
-    private final ArrayList<Stake> List = new ArrayList<>();
+    private final ArrayList<Stake> stakes = new ArrayList<>();
 
     @Override
     public List<Stake> findAll() {
-        return List;
+        return stakes;
     }
 
     @Override
     public Optional<Stake> findById(UUID stakeId) {
-        for (Stake stake : List) {
-            if (stake.stakeId().equals(stakeId)) {
-                return Optional.of(stake);
-            }
-        }
-        return Optional.empty();
+        return stakes.stream()
+                .filter(stake -> stake.stakeId().equals(stakeId))
+                .findFirst();
     }
 
     @Override
@@ -36,22 +34,21 @@ public class InMemoryStakeRepository implements StakeRepository {
                 UUID.randomUUID(),
                 stakeRequest.role()
         );
-        List.add(stake);
+        stakes.add(stake);
         return stake;
     }
 
     @Override
     public Stake update(UUID stakeId, StakeDTO stakeRequest) {
-        for (int i = 0; i < List.size(); i++) {
-            Stake existing = List.get(i);
-            if (existing.stakeId().equals(stakeId)) {
+        for (Stake stake : stakes) {
+            if (stake.stakeId().equals(stakeId)) {
                 Stake updatedStake = new Stake(
-                        existing.stakeId(),
-                        existing.userId(),
-                        existing.missionId(),
+                        stake.stakeId(),
+                        stake.userId(),
+                        stake.missionId(),
                         stakeRequest.role()
                 );
-                List.set(i, updatedStake);
+                stakes.set(stakes.indexOf(stake), updatedStake);
                 return updatedStake;
             }
         }
@@ -60,6 +57,6 @@ public class InMemoryStakeRepository implements StakeRepository {
 
     @Override
     public void delete(UUID stakeId) {
-        List.removeIf(stake -> stake.stakeId().equals(stakeId));
+        stakes.removeIf(stake -> stake.stakeId().equals(stakeId));
     }
 }

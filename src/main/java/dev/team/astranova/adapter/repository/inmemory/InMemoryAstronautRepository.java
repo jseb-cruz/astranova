@@ -11,21 +11,18 @@ import java.util.UUID;
 
 public class InMemoryAstronautRepository implements AstronautRepository {
 
-    private final ArrayList<Astronaut> List = new ArrayList<>();
+    private final ArrayList<Astronaut> astronauts = new ArrayList<>();
 
     @Override
     public List<Astronaut> findAll() {
-        return List;
+        return astronauts;
     }
 
     @Override
     public Optional<Astronaut> findById(UUID astronautId) {
-        for (Astronaut astronaut : List) {
-            if (astronaut.userId().equals(astronautId)) {
-                return Optional.of(astronaut);
-            }
-        }
-        return Optional.empty();
+        return astronauts.stream()
+                .filter(astronaut -> astronaut.userId().equals(astronautId))
+                .findFirst();
     }
 
     @Override
@@ -38,23 +35,23 @@ public class InMemoryAstronautRepository implements AstronautRepository {
                 astronautRequest.experience(),
                 astronautRequest.state()
         );
-        List.add(astronaut);
+        astronauts.add(astronaut);
         return astronaut;
     }
 
     @Override
     public Astronaut update(UUID astronautId, AstronautDTO astronautRequest) {
-        for (int i = 0; i < List.size(); i++) {
-            if (List.get(i).userId().equals(astronautId)) {
+        for (Astronaut astronaut : astronauts) {
+            if (astronaut.userId().equals(astronautId)) {
                 Astronaut updatedAstronaut = new Astronaut(
-                        astronautId,
+                        astronaut.userId(),
                         astronautRequest.nationality(),
                         astronautRequest.range(),
                         astronautRequest.specialty(),
                         astronautRequest.experience(),
                         astronautRequest.state()
                 );
-                List.set(i, updatedAstronaut);
+                astronauts.set(astronauts.indexOf(astronaut), updatedAstronaut);
                 return updatedAstronaut;
             }
         }
@@ -63,6 +60,6 @@ public class InMemoryAstronautRepository implements AstronautRepository {
 
     @Override
     public void delete(UUID astronautId) {
-        List.removeIf(astronaut -> astronaut.userId().equals(astronautId));
+        astronauts.removeIf(astronaut -> astronaut.userId().equals(astronautId));
     }
 }

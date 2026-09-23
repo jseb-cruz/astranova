@@ -14,21 +14,18 @@ import java.util.UUID;
  */
 public class InMemoryMissionRepository implements MissionRepository {
 
-    private final ArrayList<Mission> List = new ArrayList<>();
+    private final ArrayList<Mission> missions = new ArrayList<>();
 
     @Override
     public List<Mission> findAll() {
-        return List;
+        return missions;
     }
 
     @Override
     public Optional<Mission> findById(UUID missionId) {
-        for (Mission mission : List) {
-            if (mission.missionId().equals(missionId)) {
-                return Optional.of(mission);
-            }
-        }
-        return Optional.empty();
+        return missions.stream()
+                .filter(m -> m.missionId().equals(missionId))
+                .findFirst();
     }
 
     @Override
@@ -48,19 +45,18 @@ public class InMemoryMissionRepository implements MissionRepository {
                 missionRequest.result()
         );
 
-        List.add(mission);
+        missions.add(mission);
         return mission;
     }
 
     @Override
     public Mission update(UUID missionId, MissionDTO missionRequest) {
-        for (int i = 0; i < List.size(); i++) {
-            Mission existing = List.get(i);
-            if (existing.missionId().equals(missionId)) {
-                Mission updated = new Mission(
-                        missionId,
-                        UUID.randomUUID(),
-                        UUID.randomUUID(),
+        for (Mission mission : missions) {
+            if (mission.missionId().equals(missionId)) {
+                Mission updatedMission = new Mission(
+                        mission.missionId(),
+                        mission.spaceshipId(),
+                        mission.planetId(),
                         missionRequest.name(),
                         missionRequest.startDate(),
                         missionRequest.endDate(),
@@ -70,16 +66,15 @@ public class InMemoryMissionRepository implements MissionRepository {
                         missionRequest.usedRecurses(),
                         missionRequest.result()
                 );
-
-                List.set(i, updated);
-                return updated;
+                missions.set(missions.indexOf(mission), updatedMission);
+                return updatedMission;
             }
         }
         return null;
-    }
+        }
 
     @Override
     public void delete(UUID missionId) {
-        List.removeIf(m -> m.missionId().equals(missionId));
+        missions.removeIf(m -> m.missionId().equals(missionId));
     }
 }
