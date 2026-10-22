@@ -7,3 +7,5 @@ import java.util.UUID;
 
 public interface SpringDataAstronautRepository extends JpaRepository<AstronautJPA, UUID> {
 }
+// CLASE ORQUESTADORA
+//db conection
